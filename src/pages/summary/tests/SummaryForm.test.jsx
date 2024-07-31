@@ -2,7 +2,6 @@ import { expect } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 
-
 import SummaryForm from "../SummaryForm";
 
 test("Initial Condition", () => {
@@ -53,7 +52,9 @@ test("Popover responds to hover", async () => {
   const termsAndCondition = screen.getByText(/terms and conditions/i);
 
   await user.hover(termsAndCondition);
-  expect(nullPopver).toBeInTheDocument();
+
+  const popover = screen.getByText(/no ice cream will actually be delivered/i);
+  expect(popover).toBeInTheDocument();
 
   // popover disappear when we exitt
 
